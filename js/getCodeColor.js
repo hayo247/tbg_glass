@@ -39,10 +39,14 @@
             $("#tot_count").text(tot.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ","));
         })
 
-        
         $("#sendMail").on('click', function(){
             vaild();
         });
+
+        $("#psnlAdd").on('click', function(){
+            fn_layerPop($("#psnlPopup"));
+        });
+
     });
     
     function onColorChange(color){
@@ -99,6 +103,11 @@
             return;
         }
         
+        if(!$("#chkAgree").prop('checked')){
+			fn_layerPop($("#alertPopup"), "개인정보 취급방침을 동의합니다.");
+            return;
+        }
+
         save_img()
     }
     function save_img(){
@@ -171,6 +180,6 @@
 
     
 function fn_callBackSendEmail(){
-	$("._payOpt").text($("#totOptCnt").text());
+	$("._payOpt").text($("#tot_count").text());
 	fn_layerPop($("#payPopup"));
 }
