@@ -1,0 +1,194 @@
+<html>
+    <head>
+		<link rel="stylesheet" type="text/css" href="./css/codeColor.css">
+		<link rel="stylesheet" type="text/css" href="./css/common.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css"/>
+
+        <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+		<script type="text/javascript" src="./js/common.js"></script>
+		<script type="text/javascript" src="./js/getCodeColor.js"></script>
+
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>태범글라스텍 코드</title>
+    </head>
+    <body>
+        <div class="colorDiv">
+            <div class="colorView" id="colorArea">
+            </div>
+
+            <div class="colorSel">
+                <div class="codeTxt">
+                    <span id="code">TB_C3D3L34</span>
+                    <button onclick="addCart()">샘플담기</button>
+                </div>
+                <input type="text" class="iptColor" id="color-Ris" data-coloris>            
+                <div class="clolorBox"></div>
+            </div>            
+        </div>
+
+        <div class="cart">
+            <p class="bold"> * 주문하실 샘플 목록를 확인해주세요.</p>
+            <table class="colorTable">
+                <thead>
+                    <tr>
+                        <td class="chk">&nbsp;</td>
+                        <td class="val">제품</td>
+                        <td class="cnt">갯수</td>
+                    </tr>
+                </thead>
+                <tbody id="colorList">
+                </tbody>
+            </table>
+            <table class="totalTable">
+                <colgroup>
+                    <col width="16px"/>
+                    <col width=""/>
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td>
+                            <a href="#" id="select_delete_cart"><span class="BtnTypeA">선택삭제</span></a>
+                            <a href="#" id="all_delete_cart"><span class="BtnTypeA">전체삭제</span></a>
+                        </td>
+                        <td>총 수량 : <span class="fc0"><span id="tot_count">0</span>개</span></td>
+                    </tr>
+    		    </tbody>
+            </table>
+        </div>
+        <hr>
+            <div class="orderDiv">          
+				<form id="emailfrm" name="emailfrm" class="orderInfo">				
+					<input type="hidden" id="market_name" name="market_name"value="">	
+					<input type="hidden" id="price_count" name="price_count" value=""> 
+					<input type="hidden" id="cart" name="cart" value="">   			
+			
+					<p class="fr0">★ 주문시 수취인 성함과 동일하게 작성해주셔야 확인이 가능합니다.</p>
+					<input type="text" id="order_name" name="order_name" placeholder="(필수) 수취인 성함">
+					<input type="tel" id="order_tel" name="order_tel"0 placeholder="(필수) 수취인 연락처">    
+					<span><input type="checkbox"> 개인정보 취급방침을을 동의합니다.</span>
+				</form>
+				<button class="sendmsg" id="sendMail">발송</button>    
+            </div>
+        <p class="warTxt">판매자에게 견적서를 발송하신 후 결제수량대로 결제를 진행해주시면 됩니다.</p>
+			
+        <div id="loadingPopup" class="layer_popup" style="display: none;">
+            <div class="loadlayer">
+                <img src="./img/loading.gif">
+            </div>
+            <div class="dimmed"></div>
+        </div>
+        
+        <div id="alertPopup" class="layer_popup" style="display: none;">
+            <div class="layer">
+                <div class="text_area">
+                    <p id="pLayerTxt"></p>
+                </div>
+                <button class="btn_close" id="btnLayerOk">확 인</button>
+            </div>
+            <div class="dimmed"></div>
+        </div>
+		
+		<div style="left:-99999; top:-99999; position:fixed; border: 1px solid #5D5D5D; width: 900px; background: #8C8C8C;" id="saveImgForm">
+			<div style="margin:5px; padding : 5px; background: #4374d9">
+				<img style="height:50px" src="./img/logo/logo_taebeom.png" alt="logo_h_onmirror.png">
+			</div>
+		 	<table style="padding: 20px; font-size: 13px; width: 890px; background: #fff; margin: 5px;">
+				<tbody>
+				<tr>
+					<td style="line-height: 20px;">
+						<p style="font-size: 30px; line-height: 50px; font-weight: bold; padding: 20px 0; margin:0px"><span class="_name"></span>고객님께서<br>
+							<lable style="color: #4374D9;">주문하신 유리 견적서가 정상적으로 접수</lable>되었습니다.</p>
+							<p style="font-weight: bold; color: #FF0000; padding: 10px 0px; margin: 0px"> * 본 견적서는 고객님의 주문 확인을 위한 견적서로 스토어에서 실결제를 진행하셔야합니다.</p>
+							<p style="margin: 0px">고객님께서 보내주신 견적서는 정상 접수가 되었으며, </p>
+							<p style="margin: 0px">해당 견적서에 맞춰 결제를 진행하시면, 결제 확인 후 제품이 출고가 됩니다. </p>
+						</td>
+				</tr>
+				  <tr>
+					  <td>
+						  <p style="font-size: 20px;border-bottom: 5px solid #4C4C4C;margin-top: 40px;padding: 5px;">고객 정보 </p>
+						  <table style="width: 100%; border-collapse: collapse; border-bottom: 1px solid #BDBDBD;">
+							  <colgroup>
+								<col style="width: 20%;">
+								<col>
+							</colgroup>
+
+							<tbody>
+								<tr style="border-bottom: 1px solid #BDBDBD;">     
+									<td style="padding: 10px; border-right: 1px solid #BDBDBD; width: 20%;">성 함</td>
+									<td style="padding: 10px" class="_name"></td>
+								</tr>
+								<tr style="border-bottom: 1px solid #BDBDBD;">     
+									<td style="padding: 10px; border-right: 1px solid #BDBDBD; width: 20%;">연락처</td>
+									<td style="padding: 10px" class="_tel"></td>
+								</tr>
+								<tr style="border-bottom: 1px solid #BDBDBD;">     
+									<td style="padding: 10px; border-right: 1px solid #BDBDBD; width: 20%;">주문처</td>
+									<td style="padding: 10px;" class="_market"></td>
+								</tr>
+							  </tbody>
+						  </table>
+					  </td>
+				  </tr>
+				  <tr>
+					  <td>
+						<p style="font-size: 20px;border-bottom: 5px solid #4C4C4C;margin-top: 40px;padding: 5px;">견적 내역</p>
+						<table style="width: 100%; border-collapse: collapse; border-bottom: 1px solid #BDBDBD; text-align: center;">
+								<colgroup>
+									<col style="width: 20%;">
+									<col style="width: 60%;">
+									<col style="width: 20%;">
+								</colgroup>
+								<thead style="border-bottom: 2px solid #747474; height: 35px;">
+									<tr>
+										<td style="border-right: 1px solid #BDBDBD;">색상<br></td>
+										<td style="border-right: 1px solid #BDBDBD;">제품<br></td>
+										<td style="border-right: 1px solid #BDBDBD;">수량</td>
+									</tr>
+								</thead>
+								<tbody class="_cartList">
+							</tbody>
+						</table>
+						<div style="text-align: end;padding: 5px;font-size: 11px;">단위 : mm / 원</div>
+					</td>
+				</tr>
+				<tr>
+						<td>
+							<p style="font-size: 20px;border-bottom: 5px solid #4C4C4C;margin-top: 40px;padding: 5px;">안내 사항</p>
+							<ul>
+								<li>본 견적서는 주문 확인을 위한 견적서로, 결제가 이루어져야 제품이 출고가 됩니다</li>
+								<li>견적서 다건 발송 시 마지막에 발송된 견적서 기준으로 제작이 되어집니다.</li>
+								<li>본 제품은 고객요청사항으로 제작 되는 고객 맞춤형 맞춤(주문)제작 제품입니다.<br>단순변심이나 사이즈변경 등 으로 인한 교환,반품,환불은 불가합니다.</li>
+								<li>본 제품은 주문확인 후 제작되는 맞춤(주문)제작 제품 입니다.<br>상품준비중 발생 시 단순변심 및 사이즈변경 으로 인한 취소는 불가합니다.</li>
+							</ul>
+							<div style="border: 1px solid #D5D5D5; padding: 10px 20px;">
+								<p style="font-size: 15px; font-weight: bold; margin: 0px">고객센터</p>
+								<div style="display:inline-block;padding: 10px 10px 0 0;">
+									<span style="padding: 10px 10px 0 0;">고객센터로 전화 또는 채팅상담 문의를 주시면 신속히 처리해드리겠습니다.   </span>
+								</div>
+						</div>
+					</td>
+				  </tr>
+				<tr>
+					<td style="position: relative;">
+						<hr style="border-bottom: 2px solid #A6A6A6;margin-top: 40px;">
+						<div style="width: 200px; text-align: center; margin: 15px 0; float: left;">
+							<img src="./img/logo/logo_taebeom.png" alt="logo_tbg.png" style="width: 100px;">
+						</div>
+						<div style="line-height: 18px;">
+							<p style="font-size: 20px;font-weight: bold; margin: 30px;">주식회사 태범글라스텍</p>
+							<p style="margin: 0px">주소 : 경기도 고양시 덕양구 서오릉로716번길 47-9(원흥동)</p>
+							<p style="margin: 0px">전화번호 : 031-962-0903 | 이메일 : wnstkd0615@naver.com</p>
+							<p style="margin: 0px">사업자등록번호 : 378-81-02410 | 통신판매업신고 : 제 2022-고양덕양구-0761 호</p>
+						  </div>
+					  </td>
+				  </tr>
+				</tbody>
+			</table>
+		</div>
+    </body>
+</html>

@@ -1,0 +1,194 @@
+    body {font-size: 16px;}
+    body input{font-size: 16px;}
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track { 
+        background-color: gray;
+    }
+    ::-webkit-scrollbar-thumb { 
+        background-color: skyblue;
+    }
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    .fr0 {color: #ff1c1c !important;}
+    .fc0 {color: #fce021 !important;}
+    .bold {font-weight: bold;}
+
+    .colorDiv {
+        position: relative; width:95%; display: flex;
+    }
+    .colorDiv div{
+        padding: 8px;
+    }
+    .colorDiv .colorSel {
+        width: 50%;
+    }   
+    
+    .clolorBox {
+        display: block;
+        position: relative;
+    }
+
+    .colorDiv .colorView{
+        width: 50%; height: 300px;
+    }
+
+    .codeTxt { 
+        font-size: 25px;
+        margin: 0px;
+        font-weight: bold;
+        display: flex;
+    }
+    
+    .codeTxt button{
+        font-size: 16px;
+        padding: 3px 10px;
+        border-radius: 15px;
+        margin-left: auto;
+        background: #314544;
+        color: #ffff;            
+    }
+
+    .iptColor{
+        height: 0px;
+        border: none;
+        color: white;
+    }
+
+    .colorTable{
+        width: 100%;
+        height: 100px;
+        text-align: center;
+    }
+
+    .colorTable thead, .cart table tbody tr {
+        display: table;
+        width: 100%;
+    }
+
+
+    .colorTable thead{
+        font-weight: bold;
+        background: #dbf6f5;
+    }
+    
+    .colorTable tbody{
+        display: block;
+        max-height: 100px;
+        min-height: 100px;
+        overflow-y: scroll;
+    }
+    .colorTable .chk{ width: 25px }
+    .colorTable .val{ width: 200px }
+    .colorTable .cnt{ width: 50px;}
+    .colorTable input.cnt{ width: 100%; text-align: right; font-size: 16px;}
+
+    .totalTable{
+        width: 100%;
+        background: #555;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .totalTable tr{
+        padding: 8px 0;
+    }
+
+    .BtnTypeA{
+        padding: 5px;
+        background: #fff;
+        color: #000;
+        font-size: 11px;
+        font-family: 'dotum';
+        border: 1px solid #555;
+    }
+
+    .orderDiv { 
+        display: flex;
+    }
+
+    .orderDiv .orderInfo { 
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    
+    .orderDiv .orderInfo input{ 
+        margin : 5px;
+    }
+
+    .orderDiv .sendmsg{
+        font-size: 32px;
+        font-weight: bold;
+        padding: 25;
+        border-radius: 10px;
+        margin: auto;
+        width: 48%;
+    }
+    
+    .warTxt{
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+        color: red;
+    }
+
+    .clr-picker {
+        width: 90%  !important; /* 기본값은 약 260px */
+        height: auto !important; /* 자동 조정 */
+        margin-top: 0px !important;
+        left: 0 !important;
+        display: block !important;
+        text-align: center;
+        padding: 0px !important;
+        box-shadow: none !important;
+        position: relative !important;
+    }
+    
+    .clr-field {
+        padding: 0 !important;
+    }
+    
+    .clr-field button{
+        display: none !important;
+    }
+    .clr-gradient{
+        width: -webkit-fill-available !important;
+    }
+
+    .clr-preview{
+        display: none !important;
+    }
+
+    input.clr-color {
+        width: 90% !important;
+    }
+    
+@media ( max-width: 768px ) {
+	.colorDiv{
+        width: 100%;
+        flex-direction: column;
+    }
+    .colorDiv .colorView {
+        width: 98%;
+        height: 100px;
+    }
+    .colorDiv .colorSel {
+        width: 100%;
+    }
+
+    .orderDiv {
+        flex-direction: column;
+    }
+    .orderDiv .orderInfo {
+        width: 100%;
+    }
+
+    .clr-picker {
+        width: 98% !important;
+    }
+}
