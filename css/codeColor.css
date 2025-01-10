@@ -174,11 +174,11 @@
         flex-direction: column;
     }
     .colorDiv .colorView {
-        width: 98%;
+        width: 96%;
         height: 100px;
     }
     .colorDiv .colorSel {
-        width: 100%;
+        width: 96%;
     }
 
     .orderDiv {
