@@ -46,7 +46,13 @@
         $("#psnlAdd").on('click', function(){
             fn_layerPop($("#psnlPopup"));
         });
-
+        $("#btnAddCart").on('click', function(){
+            if(!$("input[name='gloss']").is(':checked')){
+                fn_layerPop($("#alertPopup"), "유무광여부를 선택해주세요.");
+                return;
+            }
+            addCart();
+        });
     });
     
     function onColorChange(color){
@@ -67,7 +73,7 @@
         html += '	<input type="hidden" name="색상" value="' + $("#color-Ris").val() +'">';        
         html += '	<input type="hidden" name="코드" value="' + $("#code").text() +'">';          
         html += "<td class='chk'><input type='checkbox'></td>";
-        html += "<td class='val'><span style='background:" +  $("#color-Ris").val() + "'>&emsp;&emsp;</span> " + $("#code").text() + "</td>";
+        html += "<td class='val'><span style='background:" +  $("#color-Ris").val() + "'>&emsp;&emsp;</span> " + $("#code").text() + " (" + $("input[name='gloss']:checked").val() + ")</td>";
         html += "<td class='cnt'><input type='number' name='수량' class='cnt' value='1' onchange='calcTotalCnt()'></td>";
         html += "</tr>";
 
@@ -94,12 +100,12 @@
         }
         
         if($('#order_name').val() == ""){
-			fn_layerPop($("#alertPopup"), "주문자의 성함을 적어주세요");
+			fn_layerPop($("#alertPopup"), "주문자의 성함을 적어주세요.");
             return;
         }
         
         if($('#order_tel').val() == ""){
-			fn_layerPop($("#alertPopup"), "주문자의 연락처를 적어주세요");
+			fn_layerPop($("#alertPopup"), "주문자의 연락처를 적어주세요.");
             return;
         }
         
