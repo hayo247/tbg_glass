@@ -72,14 +72,15 @@
         html = "<tr>";
         html += '	<input type="hidden" name="색상" value="' + $("#color-Ris").val() +'">';        
         html += '	<input type="hidden" name="코드" value="' + $("#code").text() +'">';          
+        html += '	<input type="hidden" name="유무광" value="' + $("input[name='gloss']:checked").val() +'">';          
         html += "<td class='chk'><input type='checkbox'></td>";
         html += "<td class='val'><span style='background:" +  $("#color-Ris").val() + "'>&emsp;&emsp;</span> " + $("#code").text() + " (" + $("input[name='gloss']:checked").val() + ")</td>";
         html += "<td class='cnt'><input type='number' name='수량' class='cnt' value='1' onchange='calcTotalCnt()'></td>";
         html += "</tr>";
 
+        $("#colorList").append(html);
         var el = document.getElementById('colorList');
         el.scrollTop = el.scrollHeight;
-        $("#colorList").append(html);
         calcTotalCnt();
     }
 
@@ -123,7 +124,7 @@
         $('#colorList tr').each(function(index){
             html += '<tr style=" border-bottom: 2px solid #BDBDBD; height: 60px;">';
             html += '	<td style="border-right: 1px solid #BDBDBD; background:' + $(this).find('input[name="색상"]').val() +'">&nbsp;</td>';
-            html += '	<td style="border-right: 1px solid #BDBDBD;">' + $(this).find('input[name="코드"]').val() +'</td>';
+            html += '	<td style="border-right: 1px solid #BDBDBD;">' + $(this).find('input[name="코드"]').val() + '('+  $(this).find('input[name="유무광"]').val()+')</td>';
             html += '	<td style="border-right: 1px solid #BDBDBD;">' + $(this).find('input[name="수량"]').val() +'</td>';
             html += '</tr>';
         });
@@ -158,6 +159,7 @@
             cartTxt += $(this).find('input[name="색상"]').val() + "|";
             cartTxt += $(this).find('input[name="코드"]').val() + "|" 
             cartTxt += $(this).find('input[name="수량"]').val() + "|" ;
+            cartTxt += $(this).find('input[name="유무광"]').val() + "|" ;
         });
         
         $('#cart').val(cartTxt);
@@ -168,7 +170,7 @@
         $.ajax({
             data : queryString,
             type : 'post',
-            url : 'https://script.google.com/macros/s/AKfycbxA_8CX1h9lkTGc0JXTi55TBUE_70vec6kaJyPkKOu1tEuGqvIpSuSF0bTsF90G3Ebc/exec',
+            url : 'https://script.google.com/macros/s/AKfycbwsQE9uwd-y42I6hYDZEFlB6Ypps0ldTyGzKAah2XPNCgtIr91yUAZHI_CEkB0kq1DX/exec',
             dataType : 'json',
             error: function(xhr, status, error){
                 fn_layerPop($("#layer_alert"), error);
