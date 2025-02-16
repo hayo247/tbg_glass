@@ -42,6 +42,10 @@
         $("#sendMail").on('click', function(){
             vaild();
         });
+	    
+        $("input[name='gloss']").on('click', function(){
+            onColorChange($("#color-Ris").val());
+        });
 
         $("#psnlAdd").on('click', function(){
             fn_layerPop($("#psnlPopup"));
@@ -57,6 +61,13 @@
     
     function onColorChange(color){
         var code = ("TB_C" + valcd(color.substr(1,2), 18) + valcd(color.substr(3,2), 24)+ valcd(color.substr(5,2), 32) ).toUpperCase()
+	    
+        if($("input[name='gloss']:checked").val() == "유광"){
+            code = code + "G";
+        } else if($("input[name='gloss']:checked").val() == "무광"){
+            code = code + "S";
+        }
+        
         $("#colorArea").css('backgroundColor', color);      
         $("#color-Ris").val(color);      
         $("#code").text(code);
