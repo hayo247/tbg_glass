@@ -43,8 +43,9 @@
             vaild();
         });
 	    
-        $("input[name='gloss']").on('click', function(){
+        $("input[name='gloss']").on('click', function
             onColorChange($("#color-Ris").val());
+            $("#color-Ris").trigger("click");
         });
 
         $("#psnlAdd").on('click', function(){
