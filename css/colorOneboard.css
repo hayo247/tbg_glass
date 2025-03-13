@@ -1,0 +1,46 @@
+    body {font-size: 16px;}
+    body input{font-size: 16px;}
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track { 
+        background-color: gray;
+    }
+    ::-webkit-scrollbar-thumb { 
+        background-color: skyblue;
+    }
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    .fr0 {color: #ff1c1c !important;}
+    .fc0 {color: #fce021 !important;}
+    .bold {font-weight: bold;}
+
+    ul{list-style-type :none; padding: 0; margin: 0;}
+    ul li{margin-right: 10px;}
+    .full { width:100%; display: flex; position: relative;}
+    .half { margin: 0.5rem; position: relative; width: 50%;}
+    .third{ margin: 0.5rem; position: relative; width: 66%;}
+    .at-magin-left{margin-left: auto;}
+    .boardSample img { width: 100%; height: 100%;}
+    .boardSample .board{position: absolute; top: 6%; left: 25%; width: 50%; height: 85%; display: flex; overflow: hidden; background-color: #fff; box-shadow: 4px 4px 7px gray;}
+    .board_txt {font-size: 1.4rem; text-align: center; font-weight: bold; margin: 5px;}
+    .none {display: none;}
+
+    .option {display: flex; flex-direction: column; width: 32%;}
+
+    .pick-color .btn_cart { font-size: 32px; font-weight: bold; width: 90%; padding: 0.7rem; border-radius: 20px; background: #ffd7a4;}
+    .pick-color .choice-color { font-size: 32px; font-weight: bold;}
+    .pick-color .choice-color .min-pick-color { width: 60px; height: 52px; border: #000 1px solid;}
+
+    .board .board_type{font-weight: bold; text-align: center; font-size: 3rem;}
+    
+@media ( max-width: 768px ) {
+    .third {width: 100%;} 
+
+    .full {flex-direction: column;}
+    .boardSample img {display: none;}
+    .boardSample .board { position: relative; width: 90%; left:3%}    
+    .option { width: 100%;}
+}
