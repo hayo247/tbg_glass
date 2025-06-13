@@ -84,7 +84,7 @@ function addCart(){
 }
 
 function getCode(color){
-    var code = ("TB_C" + valcd(color.substr(1,2), 18) + valcd(color.substr(3,2), 24)+ valcd(color.substr(5,2), 32) ).toUpperCase()
+    var code = ("TB_C" + valcd(color.substr(0,2), 18) + valcd(color.substr(2,2), 24)+ valcd(color.substr(4,2), 32) ).toUpperCase()
     return code;
 }
 
